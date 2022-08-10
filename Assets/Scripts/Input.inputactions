@@ -1,0 +1,114 @@
+{
+    "name": "Input",
+    "maps": [
+        {
+            "name": "Player 1",
+            "id": "92870d58-95c9-450b-9e68-029e70bf9032",
+            "actions": [
+                {
+                    "name": "Move up",
+                    "type": "Button",
+                    "id": "113934a2-e51c-4a1a-a6c6-687967979c4f",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "Move down",
+                    "type": "Button",
+                    "id": "5d2b03c3-087d-4b85-a1c6-b1d1a4d4ee89",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                }
+            ],
+            "bindings": [
+                {
+                    "name": "",
+                    "id": "7858cd2f-3721-4ff4-8fb5-97a13af0517f",
+                    "path": "<Keyboard>/w",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Move up",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "ceffaee1-46e8-45cb-83cb-59df90f827c7",
+                    "path": "<Keyboard>/s",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Move down",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                }
+            ]
+        },
+        {
+            "name": "Player 2",
+            "id": "fe86b3b6-2a5f-49d7-b92a-2883db504a81",
+            "actions": [
+                {
+                    "name": "Move up",
+                    "type": "Button",
+                    "id": "6e8de506-c9b5-4f66-b0fc-164386075870",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "Move down",
+                    "type": "Button",
+                    "id": "20ce434f-defc-4171-8bb7-ad978a219ca2",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                }
+            ],
+            "bindings": [
+                {
+                    "name": "",
+                    "id": "8154bfae-9dcc-4a08-9fce-a92fac3ef7a7",
+                    "path": "<Keyboard>/upArrow",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Move up",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "c08d7ad9-e6b7-454c-9c42-225eb1e59a70",
+                    "path": "<Keyboard>/downArrow",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Move down",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                }
+            ]
+        }
+    ],
+    "controlSchemes": [
+        {
+            "name": "Pong",
+            "bindingGroup": "Pong",
+            "devices": [
+                {
+                    "devicePath": "<Keyboard>",
+                    "isOptional": false,
+                    "isOR": false
+                }
+            ]
+        }
+    ]
+}
