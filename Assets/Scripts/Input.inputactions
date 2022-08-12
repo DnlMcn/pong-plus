@@ -6,18 +6,9 @@
             "id": "92870d58-95c9-450b-9e68-029e70bf9032",
             "actions": [
                 {
-                    "name": "Move up",
+                    "name": "Move",
                     "type": "Button",
-                    "id": "113934a2-e51c-4a1a-a6c6-687967979c4f",
-                    "expectedControlType": "Button",
-                    "processors": "",
-                    "interactions": "",
-                    "initialStateCheck": false
-                },
-                {
-                    "name": "Move down",
-                    "type": "Button",
-                    "id": "5d2b03c3-087d-4b85-a1c6-b1d1a4d4ee89",
+                    "id": "2d034521-adba-49c1-b14a-1b960ee2f652",
                     "expectedControlType": "Button",
                     "processors": "",
                     "interactions": "",
@@ -26,74 +17,37 @@
             ],
             "bindings": [
                 {
-                    "name": "",
-                    "id": "7858cd2f-3721-4ff4-8fb5-97a13af0517f",
+                    "name": "Vertical",
+                    "id": "4e858c95-0b2a-4c29-8f64-ee54c7839831",
+                    "path": "1DAxis",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Move",
+                    "isComposite": true,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "positive",
+                    "id": "cf22a01f-9a0a-4351-96f3-e398feb29f15",
                     "path": "<Keyboard>/w",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "Move up",
+                    "action": "Move",
                     "isComposite": false,
-                    "isPartOfComposite": false
+                    "isPartOfComposite": true
                 },
                 {
-                    "name": "",
-                    "id": "ceffaee1-46e8-45cb-83cb-59df90f827c7",
+                    "name": "negative",
+                    "id": "de2574b3-8b08-44c6-bb6a-4168adfae289",
                     "path": "<Keyboard>/s",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "Move down",
+                    "action": "Move",
                     "isComposite": false,
-                    "isPartOfComposite": false
-                }
-            ]
-        },
-        {
-            "name": "Player 2",
-            "id": "fe86b3b6-2a5f-49d7-b92a-2883db504a81",
-            "actions": [
-                {
-                    "name": "Move up",
-                    "type": "Button",
-                    "id": "6e8de506-c9b5-4f66-b0fc-164386075870",
-                    "expectedControlType": "Button",
-                    "processors": "",
-                    "interactions": "",
-                    "initialStateCheck": false
-                },
-                {
-                    "name": "Move down",
-                    "type": "Button",
-                    "id": "20ce434f-defc-4171-8bb7-ad978a219ca2",
-                    "expectedControlType": "Button",
-                    "processors": "",
-                    "interactions": "",
-                    "initialStateCheck": false
-                }
-            ],
-            "bindings": [
-                {
-                    "name": "",
-                    "id": "8154bfae-9dcc-4a08-9fce-a92fac3ef7a7",
-                    "path": "<Keyboard>/upArrow",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "Move up",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
-                    "id": "c08d7ad9-e6b7-454c-9c42-225eb1e59a70",
-                    "path": "<Keyboard>/downArrow",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "Move down",
-                    "isComposite": false,
-                    "isPartOfComposite": false
+                    "isPartOfComposite": true
                 }
             ]
         }

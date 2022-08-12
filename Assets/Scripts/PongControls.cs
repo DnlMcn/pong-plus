@@ -28,18 +28,9 @@ public partial class @PongControls : IInputActionCollection2, IDisposable
             ""id"": ""92870d58-95c9-450b-9e68-029e70bf9032"",
             ""actions"": [
                 {
-                    ""name"": ""Move up"",
+                    ""name"": ""Move"",
                     ""type"": ""Button"",
-                    ""id"": ""113934a2-e51c-4a1a-a6c6-687967979c4f"",
-                    ""expectedControlType"": ""Button"",
-                    ""processors"": """",
-                    ""interactions"": """",
-                    ""initialStateCheck"": false
-                },
-                {
-                    ""name"": ""Move down"",
-                    ""type"": ""Button"",
-                    ""id"": ""5d2b03c3-087d-4b85-a1c6-b1d1a4d4ee89"",
+                    ""id"": ""2d034521-adba-49c1-b14a-1b960ee2f652"",
                     ""expectedControlType"": ""Button"",
                     ""processors"": """",
                     ""interactions"": """",
@@ -48,74 +39,37 @@ public partial class @PongControls : IInputActionCollection2, IDisposable
             ],
             ""bindings"": [
                 {
-                    ""name"": """",
-                    ""id"": ""7858cd2f-3721-4ff4-8fb5-97a13af0517f"",
+                    ""name"": ""Vertical"",
+                    ""id"": ""4e858c95-0b2a-4c29-8f64-ee54c7839831"",
+                    ""path"": ""1DAxis"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Move"",
+                    ""isComposite"": true,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": ""positive"",
+                    ""id"": ""cf22a01f-9a0a-4351-96f3-e398feb29f15"",
                     ""path"": ""<Keyboard>/w"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
-                    ""action"": ""Move up"",
+                    ""action"": ""Move"",
                     ""isComposite"": false,
-                    ""isPartOfComposite"": false
+                    ""isPartOfComposite"": true
                 },
                 {
-                    ""name"": """",
-                    ""id"": ""ceffaee1-46e8-45cb-83cb-59df90f827c7"",
+                    ""name"": ""negative"",
+                    ""id"": ""de2574b3-8b08-44c6-bb6a-4168adfae289"",
                     ""path"": ""<Keyboard>/s"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
-                    ""action"": ""Move down"",
+                    ""action"": ""Move"",
                     ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                }
-            ]
-        },
-        {
-            ""name"": ""Player 2"",
-            ""id"": ""fe86b3b6-2a5f-49d7-b92a-2883db504a81"",
-            ""actions"": [
-                {
-                    ""name"": ""Move up"",
-                    ""type"": ""Button"",
-                    ""id"": ""6e8de506-c9b5-4f66-b0fc-164386075870"",
-                    ""expectedControlType"": ""Button"",
-                    ""processors"": """",
-                    ""interactions"": """",
-                    ""initialStateCheck"": false
-                },
-                {
-                    ""name"": ""Move down"",
-                    ""type"": ""Button"",
-                    ""id"": ""20ce434f-defc-4171-8bb7-ad978a219ca2"",
-                    ""expectedControlType"": ""Button"",
-                    ""processors"": """",
-                    ""interactions"": """",
-                    ""initialStateCheck"": false
-                }
-            ],
-            ""bindings"": [
-                {
-                    ""name"": """",
-                    ""id"": ""8154bfae-9dcc-4a08-9fce-a92fac3ef7a7"",
-                    ""path"": ""<Keyboard>/upArrow"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""Move up"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": """",
-                    ""id"": ""c08d7ad9-e6b7-454c-9c42-225eb1e59a70"",
-                    ""path"": ""<Keyboard>/downArrow"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""Move down"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
+                    ""isPartOfComposite"": true
                 }
             ]
         }
@@ -136,12 +90,7 @@ public partial class @PongControls : IInputActionCollection2, IDisposable
 }");
         // Player 1
         m_Player1 = asset.FindActionMap("Player 1", throwIfNotFound: true);
-        m_Player1_Moveup = m_Player1.FindAction("Move up", throwIfNotFound: true);
-        m_Player1_Movedown = m_Player1.FindAction("Move down", throwIfNotFound: true);
-        // Player 2
-        m_Player2 = asset.FindActionMap("Player 2", throwIfNotFound: true);
-        m_Player2_Moveup = m_Player2.FindAction("Move up", throwIfNotFound: true);
-        m_Player2_Movedown = m_Player2.FindAction("Move down", throwIfNotFound: true);
+        m_Player1_Move = m_Player1.FindAction("Move", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -201,14 +150,12 @@ public partial class @PongControls : IInputActionCollection2, IDisposable
     // Player 1
     private readonly InputActionMap m_Player1;
     private IPlayer1Actions m_Player1ActionsCallbackInterface;
-    private readonly InputAction m_Player1_Moveup;
-    private readonly InputAction m_Player1_Movedown;
+    private readonly InputAction m_Player1_Move;
     public struct Player1Actions
     {
         private @PongControls m_Wrapper;
         public Player1Actions(@PongControls wrapper) { m_Wrapper = wrapper; }
-        public InputAction @Moveup => m_Wrapper.m_Player1_Moveup;
-        public InputAction @Movedown => m_Wrapper.m_Player1_Movedown;
+        public InputAction @Move => m_Wrapper.m_Player1_Move;
         public InputActionMap Get() { return m_Wrapper.m_Player1; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -218,67 +165,20 @@ public partial class @PongControls : IInputActionCollection2, IDisposable
         {
             if (m_Wrapper.m_Player1ActionsCallbackInterface != null)
             {
-                @Moveup.started -= m_Wrapper.m_Player1ActionsCallbackInterface.OnMoveup;
-                @Moveup.performed -= m_Wrapper.m_Player1ActionsCallbackInterface.OnMoveup;
-                @Moveup.canceled -= m_Wrapper.m_Player1ActionsCallbackInterface.OnMoveup;
-                @Movedown.started -= m_Wrapper.m_Player1ActionsCallbackInterface.OnMovedown;
-                @Movedown.performed -= m_Wrapper.m_Player1ActionsCallbackInterface.OnMovedown;
-                @Movedown.canceled -= m_Wrapper.m_Player1ActionsCallbackInterface.OnMovedown;
+                @Move.started -= m_Wrapper.m_Player1ActionsCallbackInterface.OnMove;
+                @Move.performed -= m_Wrapper.m_Player1ActionsCallbackInterface.OnMove;
+                @Move.canceled -= m_Wrapper.m_Player1ActionsCallbackInterface.OnMove;
             }
             m_Wrapper.m_Player1ActionsCallbackInterface = instance;
             if (instance != null)
             {
-                @Moveup.started += instance.OnMoveup;
-                @Moveup.performed += instance.OnMoveup;
-                @Moveup.canceled += instance.OnMoveup;
-                @Movedown.started += instance.OnMovedown;
-                @Movedown.performed += instance.OnMovedown;
-                @Movedown.canceled += instance.OnMovedown;
+                @Move.started += instance.OnMove;
+                @Move.performed += instance.OnMove;
+                @Move.canceled += instance.OnMove;
             }
         }
     }
     public Player1Actions @Player1 => new Player1Actions(this);
-
-    // Player 2
-    private readonly InputActionMap m_Player2;
-    private IPlayer2Actions m_Player2ActionsCallbackInterface;
-    private readonly InputAction m_Player2_Moveup;
-    private readonly InputAction m_Player2_Movedown;
-    public struct Player2Actions
-    {
-        private @PongControls m_Wrapper;
-        public Player2Actions(@PongControls wrapper) { m_Wrapper = wrapper; }
-        public InputAction @Moveup => m_Wrapper.m_Player2_Moveup;
-        public InputAction @Movedown => m_Wrapper.m_Player2_Movedown;
-        public InputActionMap Get() { return m_Wrapper.m_Player2; }
-        public void Enable() { Get().Enable(); }
-        public void Disable() { Get().Disable(); }
-        public bool enabled => Get().enabled;
-        public static implicit operator InputActionMap(Player2Actions set) { return set.Get(); }
-        public void SetCallbacks(IPlayer2Actions instance)
-        {
-            if (m_Wrapper.m_Player2ActionsCallbackInterface != null)
-            {
-                @Moveup.started -= m_Wrapper.m_Player2ActionsCallbackInterface.OnMoveup;
-                @Moveup.performed -= m_Wrapper.m_Player2ActionsCallbackInterface.OnMoveup;
-                @Moveup.canceled -= m_Wrapper.m_Player2ActionsCallbackInterface.OnMoveup;
-                @Movedown.started -= m_Wrapper.m_Player2ActionsCallbackInterface.OnMovedown;
-                @Movedown.performed -= m_Wrapper.m_Player2ActionsCallbackInterface.OnMovedown;
-                @Movedown.canceled -= m_Wrapper.m_Player2ActionsCallbackInterface.OnMovedown;
-            }
-            m_Wrapper.m_Player2ActionsCallbackInterface = instance;
-            if (instance != null)
-            {
-                @Moveup.started += instance.OnMoveup;
-                @Moveup.performed += instance.OnMoveup;
-                @Moveup.canceled += instance.OnMoveup;
-                @Movedown.started += instance.OnMovedown;
-                @Movedown.performed += instance.OnMovedown;
-                @Movedown.canceled += instance.OnMovedown;
-            }
-        }
-    }
-    public Player2Actions @Player2 => new Player2Actions(this);
     private int m_PongSchemeIndex = -1;
     public InputControlScheme PongScheme
     {
@@ -290,12 +190,6 @@ public partial class @PongControls : IInputActionCollection2, IDisposable
     }
     public interface IPlayer1Actions
     {
-        void OnMoveup(InputAction.CallbackContext context);
-        void OnMovedown(InputAction.CallbackContext context);
-    }
-    public interface IPlayer2Actions
-    {
-        void OnMoveup(InputAction.CallbackContext context);
-        void OnMovedown(InputAction.CallbackContext context);
+        void OnMove(InputAction.CallbackContext context);
     }
 }

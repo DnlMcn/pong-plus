@@ -7,11 +7,38 @@ public class PongController : MonoBehaviour
 {
     [SerializeField] private float speed = 5f;
 
-    private PongControls pongControls;
+    public InputAction playerControls;
+
+    Vector2 movementInput = new Vector2().zero;
     
+
+    private void OnEnable()
+    {
+        playerControls.Enable();
+    }
+
+    private void OnDisable()
+    {
+        playerControls.Enable();
+    }
 
     void Update()
     {
+        movementInput = playerControls.ReadValue<Vector2>()
+    }
+
+    private void FixedUpdate()
+    {
         
+    }
+
+    private void MoveUp()
+    {
+        Debug.Log("Move Up");
+    }
+
+    private void MoveDown()
+    {
+        Debug.Log("Move Down");
     }
 }
