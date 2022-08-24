@@ -1,44 +1,48 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.InputSystem;
 
 public class PongController : MonoBehaviour
 {
-    [SerializeField] private float speed = 5f;
-
-    public InputAction playerControls;
-
-    Vector2 movementInput = new Vector2().zero;
+    [SerializeField] private float speed = 10f;
+    [SerializeField] private int player;
+    private Vector2 movementInput;
     
-
-    private void OnEnable()
+    private void Update() 
     {
-        playerControls.Enable();
-    }
+        if (player == 1)
+        {
+            if (Input.GetKey("w"))
+            {
+                Debug.Log("W");
+                transform.Translate(new Vector2(0, 1) * speed * Time.deltaTime);
+            }
 
-    private void OnDisable()
-    {
-        playerControls.Enable();
-    }
+            if (Input.GetKey("s"))
+            {
+                Debug.Log("S");
+                transform.Translate(new Vector2(0, -1) * speed * Time.deltaTime);
+            }
+        }
 
-    void Update()
-    {
-        movementInput = playerControls.ReadValue<Vector2>()
+        else if (player == 2)
+        {
+            if (Input.GetKey("up"))
+            {
+                Debug.Log("up");
+                transform.Translate(new Vector2(0, 1) * speed * Time.deltaTime);
+            }
+
+            if (Input.GetKey("down"))
+            {
+                Debug.Log("down");
+                transform.Translate(new Vector2(0, -1) * speed * Time.deltaTime);
+            }
+        }
     }
 
     private void FixedUpdate()
     {
-        
     }
 
-    private void MoveUp()
-    {
-        Debug.Log("Move Up");
-    }
-
-    private void MoveDown()
-    {
-        Debug.Log("Move Down");
-    }
 }
