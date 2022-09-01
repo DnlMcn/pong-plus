@@ -1238,8 +1238,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 201.2, y: -135}
-  m_SizeDelta: {x: 151.3336, y: 29.037}
+  m_AnchoredPosition: {x: 192.20619, y: -135}
+  m_SizeDelta: {x: 169.3212, y: 29.037}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1551463364
 MonoBehaviour:
@@ -1383,8 +1383,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: ovo pascoa
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 70e434162fa21784d97fe5af04bcd852, type: 2}
-  m_sharedMaterial: {fileID: -5958292192604050321, guid: 70e434162fa21784d97fe5af04bcd852, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: de26d2f3a336256408b0c721eb903c82, type: 2}
+  m_sharedMaterial: {fileID: 2925524851926726851, guid: de26d2f3a336256408b0c721eb903c82, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
