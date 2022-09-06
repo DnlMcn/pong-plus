@@ -4,9 +4,10 @@ using UnityEngine;
 
 public class PongController : MonoBehaviour
 {
-    [SerializeField] private float speed = 10f;
+    [SerializeField] private float speed;
     [SerializeField] private int player;
-    
+
+
     private void Update() 
     {
         if (player == 1)
@@ -22,8 +23,10 @@ public class PongController : MonoBehaviour
         }
     }
 
-    private void FixedUpdate()
+    private OnTriggerEnter2D(Collider collider)    
     {
+        
+    
     }
 
 }

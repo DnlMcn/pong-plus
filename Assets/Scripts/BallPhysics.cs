@@ -11,19 +11,19 @@ public class BallPhysics : MonoBehaviour
     void Start()
     {
         CalculateStartingVelocity();     
+        velocity = new Vector2(startingSide, velocity.y);
     }
 
     
     void Update()
     {
-        velocity = new Vector2(startingSide, velocity.y);
         transform.Translate(velocity * speed * Time.deltaTime); 
     }
 
     private void OnTriggerEnter2D(Collider2D collider)
     {
         if (collider.gameObject.tag == "Wall") { Debug.Log("Collision with wall"); velocity.y *= -1; }
-        if (collider.gameObject.tag == "Player") { Debug.Log("Collision with player"); velocity.x *= 1; }
+        if (collider.gameObject.tag == "Player") { Debug.Log("Collision with player"); velocity.x *= -1; }
     }
 
     private void CalculateStartingVelocity()
