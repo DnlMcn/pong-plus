@@ -7,26 +7,52 @@ public class PongController : MonoBehaviour
     [SerializeField] private float speed;
     [SerializeField] private int player;
 
+    private float speedBackup;
+    private int moveDirection;
+    private int wallCollided;
+
+
+    private void Start() 
+    {
+        speedBackup = speed;
+    }
 
     private void Update() 
     {
         if (player == 1)
         {
-            if (Input.GetKey("w")) { transform.Translate(new Vector2(0, 1) * speed * Time.deltaTime); }
-            if (Input.GetKey("s")) { transform.Translate(new Vector2(0, -1) * speed * Time.deltaTime); }
+            if (Input.GetKey("w")) { CalculateMovement(1); }
+            if (Input.GetKey("s")) { CalculateMovement(-1); }
         }
 
         else if (player == 2)
         {
-            if (Input.GetKey("up")) { transform.Translate(new Vector2(0, 1) * speed * Time.deltaTime); }
-            if (Input.GetKey("down")) { transform.Translate(new Vector2(0, -1) * speed * Time.deltaTime); }
+            if (Input.GetKey("up")) { CalculateMovement(1); }
+            if (Input.GetKey("down")) { CalculateMovement(-1); }
         }
     }
 
-    private OnTriggerEnter2D(Collider collider)    
+    private void CalculateMovement(int direction)
     {
-        
-    
+        if (direction == -wallCollided) { speed = speedBackup; }  
+        transform.Translate(new Vector2(0, direction) * speed * Time.deltaTime);
+    }
+
+    private void OnTriggerEnter2D(Collider2D collider)    
+    {
+        if (collider.gameObject.tag == "TopWall")
+        {
+            Debug.Log("Player collision with top wall");
+            speed = 0; 
+            wallCollided = 1;
+        }    
+
+        else if (collider.gameObject.tag == "BottomWall")
+        {
+            Debug.Log("Player collision with bottom wall");
+            speed = 0;
+            wallCollided = -1;
+        } 
     }
 
 }

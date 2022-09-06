@@ -22,8 +22,12 @@ public class BallPhysics : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collider)
     {
-        if (collider.gameObject.tag == "Wall") { Debug.Log("Collision with wall"); velocity.y *= -1; }
+        if (collider.gameObject.tag == "TopWall") { Debug.Log("Collision with top wall"); velocity.y *= -1; }
+        if (collider.gameObject.tag == "BottomWall") { Debug.Log("Collision with top wall"); velocity.y *= -1; }
+
         if (collider.gameObject.tag == "Player") { Debug.Log("Collision with player"); velocity.x *= -1; }
+
+        if (collider.gameObject.tag == "LeftWall") { }
     }
 
     private void CalculateStartingVelocity()
