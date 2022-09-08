@@ -21,18 +21,18 @@ public class PongController : MonoBehaviour
     {
         if (player == 1)
         {
-            if (Input.GetKey("w")) { CalculateMovement(1); }
-            if (Input.GetKey("s")) { CalculateMovement(-1); }
+            if (Input.GetKey("w")) { HandleMovement(1); }
+            if (Input.GetKey("s")) { HandleMovement(-1); }
         }
 
         else if (player == 2)
         {
-            if (Input.GetKey("up")) { CalculateMovement(1); }
-            if (Input.GetKey("down")) { CalculateMovement(-1); }
+            if (Input.GetKey("up")) { HandleMovement(1); }
+            if (Input.GetKey("down")) { HandleMovement(-1); }
         }
     }
 
-    private void CalculateMovement(int direction)
+    private void HandleMovement(int direction)
     {
         if (direction == -wallCollided) { speed = speedBackup; }  
         transform.Translate(new Vector2(0, direction) * speed * Time.deltaTime);

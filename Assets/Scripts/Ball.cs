@@ -26,11 +26,11 @@ public class Ball : MonoBehaviour
     private void OnTriggerEnter2D(Collider2D collider)
     {
         // Detects collisions with walls
-        if (collider.gameObject.tag == "TopWall") { Debug.Log("Collision with top wall"); velocity.y *= -1; }
-        if (collider.gameObject.tag == "BottomWall") { Debug.Log("Collision with top wall"); velocity.y *= -1; }
+        if (collider.gameObject.tag == "TopWall") { velocity.y *= -1; }
+        if (collider.gameObject.tag == "BottomWall") { velocity.y *= -1; }
 
         // Detects collisions with players
-        if (collider.gameObject.tag == "Player") { Debug.Log("Collision with player"); velocity.x *= -1; }
+        if (collider.gameObject.tag == "Player") { velocity.x *= -1; }
 
         // Detects collisions with goals
         if (collider.gameObject.tag == "GoalRight") { lastGoalSide = 1; if (OnScore != null) { OnScore(); Destroy(gameObject); } }
