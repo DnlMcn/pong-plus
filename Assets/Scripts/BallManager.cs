@@ -8,8 +8,6 @@ public class BallManager : MonoBehaviour
     [SerializeField] float respawnWaitTime;
     private float timer;
 
-    private bool isInPlay;
-
     Ball ball;
 
     void Start()
@@ -28,6 +26,7 @@ public class BallManager : MonoBehaviour
 
     void StartRespawnBall()
     {
+        ball.OnScore += StartRespawnBall;
         StartCoroutine(RespawnBall());
     }
 }

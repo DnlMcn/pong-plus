@@ -21,6 +21,8 @@ public class ScoreManager : MonoBehaviour
 
     void HandleScore()
     {
+        ball.OnScore += HandleScore;
+
         if (ball.lastGoalSide == 1)
         {
             Debug.Log("Point for Player 1");

@@ -8,13 +8,20 @@ public class PongController : MonoBehaviour
     [SerializeField] private int player;
 
     private float speedBackup;
+    private Vector3 initialPosition;
     private int moveDirection;
     private int wallCollided;
+
+    Ball ball;
 
 
     private void Start() 
     {
         speedBackup = speed;
+        initialPosition = transform.position;
+
+        ball = FindObjectOfType<Ball>();
+        ball.OnScore += ResetPlayerPositions;
     }
 
     private void Update() 
@@ -55,4 +62,9 @@ public class PongController : MonoBehaviour
         } 
     }
 
+    void ResetPlayerPositions()
+    {
+        ball.OnScore += ResetPlayerPositions;
+        transform.position = initialPosition;
+    }
 }
