@@ -211,7 +211,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ballPrefab: {fileID: 6268846013811591846, guid: 73b1aab512945654d86b84503973e445, type: 3}
-  respawnWaitTime: 0
+  respawnWaitTime: 2
 --- !u!4 &503706779
 Transform:
   m_ObjectHideFlags: 0
@@ -1082,9 +1082,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 618a35496972e5d44aed6de27178c3b6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  score: {x: 0, y: 0}
-  player1ScoreText: {fileID: 507254473}
-  player2ScoreText: {fileID: 1261892915}
+  player1Score: 0
+  player2Score: 0
+  player1Display: {fileID: 507254473}
+  player2Display: {fileID: 1261892915}
 --- !u!1 &1488075117
 GameObject:
   m_ObjectHideFlags: 0
