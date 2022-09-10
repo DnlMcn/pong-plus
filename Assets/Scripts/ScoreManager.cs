@@ -5,12 +5,11 @@ using UnityEngine.UI;
 
 public class ScoreManager : MonoBehaviour
 {
-    public Vector2 score;
-    [SerializeField] GameObject player1ScoreText;
-    [SerializeField] GameObject player2ScoreText;
+    public int player1Score;
+    public int player2Score;
 
-    string player1ScoreString;
-    string player2ScoreString;
+    [SerializeField] GameObject player1Display;
+    [SerializeField] GameObject player2Display;
 
     Ball ball;
     
@@ -25,19 +24,19 @@ public class ScoreManager : MonoBehaviour
         if (ball.lastGoalSide == 1)
         {
             Debug.Log("Point for Player 1");
-            score.x += 1;
-            Debug.Log("Player 1's score: " + score.x);
+            player1Score += 1;
+            Debug.Log("Player 1's score: " + player1Score);
 
-            // player1ScoreText.GetComponent<Text>().text = score.x.ToString();
+            player1Display.GetComponent<TMPro.TextMeshProUGUI>().text = player1Score.ToString();
         }
 
         if (ball.lastGoalSide == -1)
         {
             Debug.Log("Point for Player 2");
-            score.y += 1;
-            Debug.Log("Player 2's score: " + score.y);
+            player2Score += 1;
+            Debug.Log("Player 2's score: " + player2Score);
 
-            // player2ScoreText.GetComponent<Text>().text = score.y.ToString();
+            player2Display.GetComponent<TMPro.TextMeshProUGUI>().text = player2Score.ToString();
         }
     }
 }

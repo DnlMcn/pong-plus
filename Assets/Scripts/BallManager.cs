@@ -6,15 +6,28 @@ public class BallManager : MonoBehaviour
 {
     [SerializeField] GameObject ballPrefab;
     [SerializeField] float respawnWaitTime;
+    private float timer;
+
     private bool isInPlay;
+
+    Ball ball;
 
     void Start()
     {
         Instantiate(ballPrefab, new Vector3(0, 0, 0), Quaternion.identity);
+
+        ball = FindObjectOfType<Ball>();
+        ball.OnScore += StartRespawnBall;
     }
 
-    void Update()
+    IEnumerator RespawnBall()
     {
-        
+        yield return new WaitForSeconds(respawnWaitTime);
+        Instantiate(ballPrefab, new Vector3(0, 0, 0), Quaternion.identity);
+    }
+
+    void StartRespawnBall()
+    {
+        StartCoroutine(RespawnBall());
     }
 }
