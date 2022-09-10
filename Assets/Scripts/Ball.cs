@@ -8,10 +8,8 @@ public class Ball : MonoBehaviour
     [SerializeField] private float speed;
     private int startingSide;
     private Vector2 velocity;
-    public int lastGoalSide;
-    private bool isFirstServe = true;
 
-    public event Action OnScore;
+    public static event Action OnScore;
 
 
     void Start()
@@ -39,14 +37,7 @@ public class Ball : MonoBehaviour
         { 
             lastGoalSide = 1; 
 
-            if (OnScore == null)
-            {
-                Debug.Log("Event is null");
-            }
-            else
-            {
-                OnScore();
-            }
+            if (OnScore != null) { OnScore(); }
 
             Destroy(gameObject); 
         }
@@ -55,33 +46,9 @@ public class Ball : MonoBehaviour
         { 
             lastGoalSide = -1; 
 
-            if (OnScore == null)
-            {
-                Debug.Log("Event is null");
-            }
-            else
-            {
-                OnScore();
-            } 
+            if (OnScore != null) { OnScore(); }
 
             Destroy(gameObject); 
         }
-    }
-
-    private void CalculateStartingVelocity()
-    {
-        // Randomize the direction of the first serve. Otherwise, serve to whoever got the last point.
-        if (isFirstServe)
-        {
-            startingSide = UnityEngine.Random.Range(-1, 2);
-            while (startingSide == 0) {startingSide = UnityEngine.Random.Range(-1, 2);}
-        }
-        else 
-        { 
-            startingSide = lastGoalSide * -1; 
-        }
-
-        velocity.y = UnityEngine.Random.Range(-1, 2);
-        while (velocity.y == 0) {velocity.y = UnityEngine.Random.Range(-1, 2);}
     }
 }
