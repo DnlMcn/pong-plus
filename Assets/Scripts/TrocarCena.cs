@@ -9,7 +9,7 @@ public class TrocarCena : MonoBehaviour
 
    public void MudarCena()
    {
-        SceneManager.LoadScene(name);
+        SceneManager.LoadScene(nomeDaCena);
    }
 
    public void CreditoCena()
