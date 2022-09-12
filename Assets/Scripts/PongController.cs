@@ -50,14 +50,12 @@ public class PongController : MonoBehaviour
         // Set player speed to 0 upon collision with walls.
         if (collider.gameObject.tag == "TopWall")
         {
-            Debug.Log("Player collision with top wall");
             speed = 0; 
             wallCollided = 1;
         }    
 
         else if (collider.gameObject.tag == "BottomWall")
         {
-            Debug.Log("Player collision with bottom wall");
             speed = 0;
             wallCollided = -1;
         } 
