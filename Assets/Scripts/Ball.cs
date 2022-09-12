@@ -6,6 +6,8 @@ using System;
 public class Ball : MonoBehaviour
 {
     [SerializeField] private float speed;
+    [SerializeField] private bool speedsUp;
+    [SerializeField] private float speedUpScale;
     private Vector2 velocity;
 
     private bool hasInitialized;
@@ -33,7 +35,12 @@ public class Ball : MonoBehaviour
         if (collider.gameObject.tag == "BottomWall") { velocity.y *= -1; }
 
         // Detect collisions with players
-        if (collider.gameObject.tag == "Player") { velocity.x *= -1; }
+        if (collider.gameObject.tag == "Player") 
+        { 
+            // Slightly increase ball speed upon contact with a player
+            if (speedsUp) { velocity.x *= -speedUpScale; }
+            else { velocity.x *= -1; }
+        }
 
         // Detect collisions with goals
         if (collider.gameObject.tag == "GoalRight") 

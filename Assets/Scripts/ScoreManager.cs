@@ -9,11 +9,19 @@ public class ScoreManager : MonoBehaviour
     public int player1Score;
     public int player2Score;
 
+    [SerializeField] private int pointsToWin;
+    public static bool hasWon;
+
     [SerializeField] GameObject player1Display;
     [SerializeField] GameObject player2Display;
+    [SerializeField] GameObject winDisplay;
+
+    BallManager ballManager;
 
     void Start()
     {
+        ballManager = FindObjectOfType<BallManager>();
+
         Ball.OnScore += HandleScore;
     }
 
@@ -37,5 +45,15 @@ public class ScoreManager : MonoBehaviour
 
             player2Display.GetComponent<TMPro.TextMeshProUGUI>().text = player2Score.ToString();
         }
+
+        // Checks if either player has won. If not, calls StartSpawnNewBall.
+        if (player1Score >= pointsToWin) { DeclareWin(1); }
+        else if (player2Score >= pointsToWin) { DeclareWin(2); }
+        else { ballManager.StartSpawnNewBall(); } 
+    }
+
+    void DeclareWin(int player)
+    {
+        winDisplay.GetComponent<TMPro.TextMeshProUGUI>().text = "Jogador " + player + " venceu!";
     }
 }
