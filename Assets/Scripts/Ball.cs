@@ -37,9 +37,9 @@ public class Ball : MonoBehaviour
         // Detect collisions with players
         if (collider.gameObject.tag == "Player") 
         { 
-            // Slightly increase ball speed upon contact with a player
-            if (speedsUp) { velocity.x *= -speedUpScale; }
-            else { velocity.x *= -1; }
+            // If speed-up is active, slightly increase ball speed upon contact with a player
+            if (speedsUp) { speed *= speedUpScale; }
+            velocity.x *= -1;
         }
 
         // Detect collisions with goals
