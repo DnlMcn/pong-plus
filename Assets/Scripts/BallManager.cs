@@ -11,26 +11,23 @@ public class BallManager : MonoBehaviour
 
     private Vector2 ballVelocity;
 
-    private int lastGoalSide;
-    private bool isFirstServe = true;
+    public static int startingSide;
+    public static int lastGoalSide;
+    public static bool isFirstServe = true;
+
+    Ball ball;
 
 
-    void Start()
+    private void Start() 
     {
-        Instantiate(ballPrefab, new Vector3(0, 0, 0), Quaternion.identity);
+        ball = FindObjectOfType<Ball>();
+        
+        Ball.OnScore += StartRespawnBall;
+
+        StartCoroutine(SpawnNewBall());
     }
 
-    private void CalculateStartingBallVelocity()
-    {
-        // Randomize the direction of the first serve. Otherwise, serve to whoever got the last point.
-        if (isFirstServe) { startingSide = UnityEngine.Random.Range(0, 2) * 2 - 1; }
-        else { startingSide = lastGoalSide * -1; }
-
-        ballVelocity.x = startingSide;
-        ballVelocity.y = UnityEngine.Random.Range(0, 2) * 2 - 1;
-    }
-
-    IEnumerator RespawnBall()
+    IEnumerator SpawnNewBall()
     {
         yield return new WaitForSeconds(respawnWaitTime);
         Instantiate(ballPrefab, new Vector3(0, 0, 0), Quaternion.identity);
@@ -38,7 +35,6 @@ public class BallManager : MonoBehaviour
 
     void StartRespawnBall()
     {
-        ball.OnScore += StartRespawnBall;
-        StartCoroutine(RespawnBall());
+        StartCoroutine(SpawnNewBall());
     }
 }

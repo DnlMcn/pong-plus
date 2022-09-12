@@ -12,16 +12,13 @@ public class PongController : MonoBehaviour
     private int moveDirection;
     private int wallCollided;
 
-    Ball ball;
-
 
     private void Start() 
     {
         speedBackup = speed;
         initialPosition = transform.position;
 
-        ball = FindObjectOfType<Ball>();
-        ball.OnScore += ResetPlayerPositions;
+        Ball.OnScore += ResetPlayerPositions;
     }
 
     private void Update() 
@@ -41,12 +38,16 @@ public class PongController : MonoBehaviour
 
     private void HandleMovement(int direction)
     {
-        if (direction == -wallCollided) { speed = speedBackup; }  
+        // Check if the player is currently touching a wall. If so, and they move in the opposite direction, return their speed.
+        if (speed == 0 && direction == -wallCollided) { speed = speedBackup; }  
+
+    	// Translate player
         transform.Translate(new Vector2(0, direction) * speed * Time.deltaTime);
     }
 
     private void OnTriggerEnter2D(Collider2D collider)    
     {
+        // Set player speed to 0 upon collision with walls.
         if (collider.gameObject.tag == "TopWall")
         {
             Debug.Log("Player collision with top wall");
@@ -64,7 +65,7 @@ public class PongController : MonoBehaviour
 
     void ResetPlayerPositions()
     {
-        ball.OnScore += ResetPlayerPositions;
+        Ball.OnScore += ResetPlayerPositions;
         transform.position = initialPosition;
     }
 }

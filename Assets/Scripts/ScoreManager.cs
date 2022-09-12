@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using System;
 
 public class ScoreManager : MonoBehaviour
 {
@@ -11,19 +12,15 @@ public class ScoreManager : MonoBehaviour
     [SerializeField] GameObject player1Display;
     [SerializeField] GameObject player2Display;
 
-    Ball ball;
-    
     void Start()
     {
-        ball = FindObjectOfType<Ball>();
-        ball.OnScore += HandleScore;
+        Ball.OnScore += HandleScore;
     }
 
     void HandleScore()
     {
-        ball.OnScore += HandleScore;
 
-        if (ball.lastGoalSide == 1)
+        if (BallManager.lastGoalSide == 1)
         {
             Debug.Log("Point for Player 1");
             player1Score += 1;
@@ -32,7 +29,7 @@ public class ScoreManager : MonoBehaviour
             player1Display.GetComponent<TMPro.TextMeshProUGUI>().text = player1Score.ToString();
         }
 
-        if (ball.lastGoalSide == -1)
+        if (BallManager.lastGoalSide == -1)
         {
             Debug.Log("Point for Player 2");
             player2Score += 1;

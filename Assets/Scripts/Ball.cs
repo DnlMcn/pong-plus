@@ -6,16 +6,19 @@ using System;
 public class Ball : MonoBehaviour
 {
     [SerializeField] private float speed;
-    private int startingSide;
     private Vector2 velocity;
+
+    private bool hasInitialized;
 
     public static event Action OnScore;
 
+    BallManager ballManager;
 
-    void Start()
+    void Start() 
     {
-        CalculateStartingVelocity();     
-        velocity = new Vector2(startingSide, velocity.y);
+        ballManager = FindObjectOfType<BallManager>();
+
+        velocity = CalculateStartingVelocity();
     }
 
     void Update()
@@ -35,20 +38,28 @@ public class Ball : MonoBehaviour
         // Detect collisions with goals
         if (collider.gameObject.tag == "GoalRight") 
         { 
-            lastGoalSide = 1; 
-
-            if (OnScore != null) { OnScore(); }
-
+            BallManager.lastGoalSide = 1; 
+            if (OnScore != null) { OnScore(); } 
             Destroy(gameObject); 
         }
-        
+
         if (collider.gameObject.tag == "GoalLeft") 
         { 
-            lastGoalSide = -1; 
-
+            BallManager.lastGoalSide = -1; 
             if (OnScore != null) { OnScore(); }
-
             Destroy(gameObject); 
         }
+    }
+
+    private Vector2 CalculateStartingVelocity()
+    {
+        // Randomize the direction of the first serve. Otherwise, serve to whoever got the last point.
+        if (BallManager.isFirstServe) { BallManager.startingSide = UnityEngine.Random.Range(0, 2) * 2 - 1; }
+        else { BallManager.startingSide = BallManager.lastGoalSide; }
+
+        velocity.x = BallManager.startingSide;
+        velocity.y = UnityEngine.Random.Range(0, 2) * 2 - 1;
+
+        return velocity;
     }
 }
