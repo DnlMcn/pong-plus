@@ -991,9 +991,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 978903158}
+      - m_Target: {fileID: 11500000, guid: 201281bab9f861243aa2e5e97c0d813c, type: 3}
         m_TargetAssemblyTypeName: TrocarCena, Assembly-CSharp
-        m_MethodName: MenuCena
+        m_MethodName: 
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
