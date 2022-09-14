@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 6565890803378563222}
   - component: {fileID: -1149780934636936828}
   m_Layer: 0
-  m_Name: Ball
+  m_Name: EasterBall
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -194,6 +194,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 8
   speedsUp: 1
-  speedUpScale: 1.02
+  speedUpScale: 1.05
   changesSize: 0
-  changeSizeScale: 0
+  changeSizeScale: 1.02
+  maxScale: 5
+  minScale: 0.2

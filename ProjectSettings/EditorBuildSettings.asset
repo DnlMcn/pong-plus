@@ -14,4 +14,7 @@ EditorBuildSettings:
   - enabled: 1
     path: "Assets/Scenes/Cr\xE9ditos.unity"
     guid: a427ebc3b9b82fe42b608dbbebc2d9a7
+  - enabled: 1
+    path: Assets/Scenes/EasterEgg.unity
+    guid: 43d513dd44084fb409be8e230183a062
   m_configObjects: {}

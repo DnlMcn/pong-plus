@@ -99,6 +99,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 5
+  rotationSpeed: 30
+  player: 1
+  canRotate: 1
 --- !u!50 &8125015467824029316
 Rigidbody2D:
   serializedVersion: 4

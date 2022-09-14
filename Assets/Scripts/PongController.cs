@@ -5,7 +5,9 @@ using UnityEngine;
 public class PongController : MonoBehaviour
 {
     [SerializeField] private float speed;
+    [SerializeField] private float rotationSpeed;
     [SerializeField] private int player;
+    [SerializeField] private bool canRotate;
 
     private float speedBackup;
     private Vector3 initialPosition;
@@ -25,24 +27,42 @@ public class PongController : MonoBehaviour
     {
         if (player == 1)
         {
-            if (Input.GetKey("w")) { HandleMovement(1); }
-            if (Input.GetKey("s")) { HandleMovement(-1); }
+            if (Input.GetKey("w")) HandleMovement(1); 
+            if (Input.GetKey("s")) HandleMovement(-1); 
         }
 
         else if (player == 2)
         {
-            if (Input.GetKey("up")) { HandleMovement(1); }
-            if (Input.GetKey("down")) { HandleMovement(-1); }
+            if (Input.GetKey("up")) HandleMovement(1); 
+            if (Input.GetKey("down")) HandleMovement(-1); 
         }
+
+        if (canRotate) HandleRotation();
     }
 
     private void HandleMovement(int direction)
     {
         // Check if the player is currently touching a wall. If so, and they move in the opposite direction, return their speed.
-        if (speed == 0 && direction == -wallCollided) { speed = speedBackup; }  
+        if (speed == 0 && direction == -wallCollided) speed = speedBackup;   
 
     	// Translate player
         transform.Translate(new Vector2(0, direction) * speed * Time.deltaTime);
+    }
+
+    private void HandleRotation()
+    {
+        if (player == 1)
+        {
+            Debug.Log("Rotating");
+            if (Input.GetKey("a")) transform.Rotate(new Vector3(0, 0, rotationSpeed * Time.deltaTime));
+            if (Input.GetKey("d")) transform.Rotate(new Vector3(0, 0, -rotationSpeed * Time.deltaTime));
+        }
+
+        else if (player == 2)
+        {
+            if (Input.GetKey("left")) transform.Rotate(new Vector3(0, 0, rotationSpeed * Time.deltaTime));
+            if (Input.GetKey("right")) transform.Rotate(new Vector3(0, 0, -rotationSpeed * Time.deltaTime));
+        }
     }
 
     private void OnTriggerEnter2D(Collider2D collider)    
@@ -65,5 +85,6 @@ public class PongController : MonoBehaviour
     {
         Ball.OnScore += ResetPlayerPositions;
         transform.position = initialPosition;
+        transform.eulerAngles = Vector3.zero;
     }
 }

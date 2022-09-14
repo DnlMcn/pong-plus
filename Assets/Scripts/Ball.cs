@@ -8,9 +8,14 @@ public class Ball : MonoBehaviour
     [SerializeField] private float speed;
     [SerializeField] private bool speedsUp;
     [SerializeField] private float speedUpScale;
+    [SerializeField] private bool changesSize;
+    [SerializeField] private float changeSizeScale;
     private Vector2 velocity;
 
     private bool hasInitialized;
+    
+    [SerializeField] private float maxScale;
+    [SerializeField] private float minScale;
 
     public static event Action OnScore;
 
@@ -27,7 +32,9 @@ public class Ball : MonoBehaviour
 
     void Update()
     {
-        transform.Translate(velocity * speed * Time.deltaTime); 
+        transform.Translate(velocity * speed * Time.deltaTime);
+        if (changesSize && transform.localScale.x <= maxScale && transform.localScale.x >= minScale) 
+            transform.localScale *= ((speedUpScale * Time.deltaTime)/5 + 1);
     }
 
     private void OnTriggerEnter2D(Collider2D collider)
@@ -65,7 +72,7 @@ public class Ball : MonoBehaviour
     {
         // Randomize the direction of the first serve. Otherwise, serve to whoever got the last point.
         if (BallManager.isFirstServe) BallManager.startingSide = UnityEngine.Random.Range(0, 2) * 2 - 1; 
-        else BallManager.startingSide = BallManager.lastGoalSide; 
+        else BallManager.startingSide = -BallManager.lastGoalSide; 
 
         velocity.x = BallManager.startingSide;
         velocity.y = UnityEngine.Random.Range(0, 2) * 2 - 1;
