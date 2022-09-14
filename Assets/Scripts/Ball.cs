@@ -22,6 +22,7 @@ public class Ball : MonoBehaviour
     BallManager ballManager;
     AudioManager audioManager;
 
+
     void Start() 
     {
         ballManager = FindObjectOfType<BallManager>();
@@ -48,7 +49,7 @@ public class Ball : MonoBehaviour
         { 
             // If speed-up is active, slightly increase ball speed upon contact with a player
             if (speedsUp) speed *= speedUpScale;
-            velocity.x *= -1;
+            VectorBounce(collider);
             audioManager.Play("Bounce");
         }
 
@@ -78,5 +79,14 @@ public class Ball : MonoBehaviour
         velocity.y = UnityEngine.Random.Range(0, 2) * 2 - 1;
 
         return velocity;
+    }
+
+    private void VectorBounce(Collider2D collider)
+    {
+        //v.Normalize();
+        float dotOfvn = Vector2.Dot(velocity, (Vector2)collider.transform.right);
+        Vector2 r = new Vector2();
+        r += -2 * dotOfvn *  (Vector2)collider.transform.right + velocity;
+        velocity = r;
     }
 }
