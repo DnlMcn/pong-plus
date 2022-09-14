@@ -17,10 +17,12 @@ public class ScoreManager : MonoBehaviour
     [SerializeField] GameObject winDisplay;
 
     BallManager ballManager;
+    AudioManager audioManager;
 
     void Start()
     {
         ballManager = FindObjectOfType<BallManager>();
+        audioManager = FindObjectOfType<AudioManager>();
 
         Ball.OnScore += HandleScore;
     }
@@ -47,13 +49,14 @@ public class ScoreManager : MonoBehaviour
         }
 
         // Checks if either player has won. If not, calls StartSpawnNewBall.
-        if (player1Score >= pointsToWin) { DeclareWin(1); }
-        else if (player2Score >= pointsToWin) { DeclareWin(2); }
-        else { ballManager.StartSpawnNewBall(); } 
+        if (player1Score >= pointsToWin) DeclareWin(1); 
+        else if (player2Score >= pointsToWin) DeclareWin(2); 
+        else ballManager.StartSpawnNewBall(); audioManager.Play("Score");
     }
 
     void DeclareWin(int player)
     {
         winDisplay.GetComponent<TMPro.TextMeshProUGUI>().text = "Jogador " + player + " venceu!";
+        audioManager.Play("Win");
     }
 }
