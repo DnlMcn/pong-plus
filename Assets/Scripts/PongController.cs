@@ -53,7 +53,6 @@ public class PongController : MonoBehaviour
     {
         if (player == 1)
         {
-            Debug.Log("Rotating");
             if (Input.GetKey("a")) transform.Rotate(new Vector3(0, 0, rotationSpeed * Time.deltaTime));
             if (Input.GetKey("d")) transform.Rotate(new Vector3(0, 0, -rotationSpeed * Time.deltaTime));
         }

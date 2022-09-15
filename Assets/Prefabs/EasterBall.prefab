@@ -194,6 +194,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 8
   speedsUp: 1
+  maxSpeed: 16
   speedUpScale: 1.05
   changesSize: 0
   changeSizeScale: 1.02

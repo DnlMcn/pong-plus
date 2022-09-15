@@ -7,6 +7,7 @@ public class Ball : MonoBehaviour
 {
     [SerializeField] private float speed;
     [SerializeField] private bool speedsUp;
+    [SerializeField] private float maxSpeed;
     [SerializeField] private float speedUpScale;
     [SerializeField] private bool changesSize;
     [SerializeField] private float changeSizeScale;
@@ -48,7 +49,7 @@ public class Ball : MonoBehaviour
         if (collider.gameObject.tag == "Player") 
         { 
             // If speed-up is active, slightly increase ball speed upon contact with a player
-            if (speedsUp) speed *= speedUpScale;
+            if (speedsUp || speed < maxSpeed) speed *= speedUpScale;
             VectorBounce(collider);
             audioManager.Play("Bounce");
         }
@@ -83,10 +84,9 @@ public class Ball : MonoBehaviour
 
     private void VectorBounce(Collider2D collider)
     {
-        //v.Normalize();
         float dotOfvn = Vector2.Dot(velocity, (Vector2)collider.transform.right);
         Vector2 r = new Vector2();
-        r += -2 * dotOfvn *  (Vector2)collider.transform.right + velocity;
+        r += -2 * dotOfvn * (Vector2)collider.transform.right + velocity;
         velocity = r;
     }
 }

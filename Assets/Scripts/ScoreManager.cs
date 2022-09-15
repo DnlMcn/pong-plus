@@ -32,19 +32,13 @@ public class ScoreManager : MonoBehaviour
 
         if (BallManager.lastGoalSide == 1)
         {
-            Debug.Log("Point for Player 1");
             player1Score += 1;
-            Debug.Log("Player 1's score: " + player1Score);
-
             player1Display.GetComponent<TMPro.TextMeshProUGUI>().text = player1Score.ToString();
         }
 
         if (BallManager.lastGoalSide == -1)
         {
-            Debug.Log("Point for Player 2");
             player2Score += 1;
-            Debug.Log("Player 2's score: " + player2Score);
-
             player2Display.GetComponent<TMPro.TextMeshProUGUI>().text = player2Score.ToString();
         }
 
