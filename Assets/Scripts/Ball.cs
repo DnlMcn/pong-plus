@@ -72,9 +72,9 @@ public class Ball : MonoBehaviour
 
     private Vector2 CalculateStartingVelocity()
     {
-        // Randomize the direction of the first serve. Otherwise, serve to whoever got the last point.
+        // Randomize the direction of the first serve. Otherwise, serve to the opposite side of the last serve
         if (BallManager.isFirstServe) BallManager.startingSide = UnityEngine.Random.Range(0, 2) * 2 - 1; 
-        else BallManager.startingSide = -BallManager.lastGoalSide; 
+        else BallManager.startingSide *= -1; 
 
         velocity.x = BallManager.startingSide;
         velocity.y = UnityEngine.Random.Range(0, 2) * 2 - 1;
